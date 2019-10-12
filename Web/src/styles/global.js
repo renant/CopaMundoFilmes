@@ -8,11 +8,13 @@ const GlobalStyle = createGlobalStyle`
     outline: 0;
   }
   body {
+    @import url(https://fonts.googleapis.com/css?family=Fira+Sans);
     background: white;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
-    font-family: sans-serif;
+    font-family: 'Fira Sans', sans-serif;
   }
 `;
+
 
 export default GlobalStyle;
