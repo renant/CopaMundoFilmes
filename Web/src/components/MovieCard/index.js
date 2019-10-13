@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Card } from './style';
 
-const MovieCard = ({ filme, onClick }) =>
-  <Card selected={filme.selected} onClick={() => onClick(filme)}>
-    <h5>{filme.titulo}</h5>
-    <img src={'./images/' + filme.id + ".jpg"} />
+const MovieCard = ({ movie, onClick }) =>
+  <Card selected={movie.selected} onClick={() => onClick(movie)}>
+    <h5>{movie.titulo}</h5>
+    <img alt={movie.titulo} src={'./images/' + movie.id + ".jpg"} />
   </Card>;
 
 export default MovieCard;

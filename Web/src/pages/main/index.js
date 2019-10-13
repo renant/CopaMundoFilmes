@@ -1,50 +1,60 @@
 import React, { Component, Fragment } from 'react';
 
-import apiFilmes from "../../services/api-filmes";
+import apiMovies from "../../services/api-movies";
 import MovieCard from '../../components/MovieCard'
 import { MainHeader } from '../../styles/style'
 import { MenuSelectedMovies, Button, CardContent } from './style'
 
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Creators as MovieActions } from '../../store/ducks/movies';
+
 class Main extends Component {
   state = {
-    filmes: [],
-    btnGerar: true,
+    movies: [],
+    btnDisable: true,
   };
 
   async componentDidMount() {
-    let response = await apiFilmes.get('/filmes');
+    let response = await apiMovies.get('/filmes');
 
     this.setState({
-      filmes: response.data.map(obj => ({ ...obj, selected: false }))
+      movies: response.data.map(obj => ({ ...obj, selected: false }))
     })
 
-    console.log(this.state);
   }
 
   selectMovie = e => {
 
-    let filmes = this.state.filmes
-    let btnGerar = true
+    let movies = this.state.movies
+    let btnDisable = true
 
-    if (filmes.filter(x => x.selected).length < 8 && !e.selected) {
-      filmes = filmes.map(obj => ({ ...obj, selected: obj.id === e.id ? true : obj.selected }))
+    if (movies.filter(x => x.selected).length < 8 && !e.selected) {
+      movies = movies.map(obj => ({ ...obj, selected: obj.id === e.id ? true : obj.selected }))
     } else {
-      filmes = filmes.map(obj => ({ ...obj, selected: obj.id === e.id ? false : obj.selected }))
+      movies = movies.map(obj => ({ ...obj, selected: obj.id === e.id ? false : obj.selected }))
     }
 
-    if (filmes.filter(x => x.selected).length === 8) {
-      btnGerar = false;
+    if (movies.filter(x => x.selected).length === 8) {
+      btnDisable = false;
     }
 
     this.setState({
-      filmes: filmes,
-      btnGerar: btnGerar
+      movies: movies,
+      btnDisable: btnDisable
     })
   }
 
+  runChampionship = e => {
+    e.preventDefault();
+    const { runChampionship } = this.props;
+    runChampionship(this.state.movies.filter(x => x.selected === true));
+    this.props.history.push('/result')
+  }
+
   render() {
-    const { filmes, btnGerar } = this.state
-    const filmesSelecionados = filmes.filter(x => x.selected == true)
+    const { movies, btnDisable } = this.state
+    const moviesSelected = movies.filter(x => x.selected === true)
 
     return (
       <Fragment>
@@ -55,15 +65,15 @@ class Main extends Component {
         </MainHeader>
 
         <MenuSelectedMovies>
-          <h4>Selecionados {filmesSelecionados.length} de 8 filmes</h4>
-          <Button disabled={btnGerar}>GERAR MEU CAMPEONATO</Button>
+          <h4>Selecionados {moviesSelected.length} de 8 filmes</h4>
+          <Button onClick={this.runChampionship} disabled={btnDisable}>GERAR MEU CAMPEONATO</Button>
         </MenuSelectedMovies>
 
         <CardContent>
           <ul>
-            {filmes.map(filme => (
-              <li key={filme.id}>
-                <MovieCard filme={filme} onClick={this.selectMovie}></MovieCard>
+            {movies.map(movie => (
+              <li key={movie.id}>
+                <MovieCard movie={movie} onClick={this.selectMovie}></MovieCard>
               </li>
             ))}
           </ul>
@@ -74,4 +84,11 @@ class Main extends Component {
 
 }
 
-export default Main;
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ ...MovieActions }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main)

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { theme } from './theme';
 
 export const MainHeader = styled.div`
+    width: 980px;
     display: flex;
     flex-direction: column;
     align-items: center;
