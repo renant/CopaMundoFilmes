@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import { theme } from './theme';
+import 'font-awesome/css/font-awesome.min.css';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -9,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     @import url(https://fonts.googleapis.com/css?family=Fira+Sans);
-    background: white;
+    background:  ${theme.black};
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     font-family: 'Fira Sans', sans-serif;

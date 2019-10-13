@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+import { theme } from '../../styles/theme';
 
 export const MenuSelectedMovies = styled.div`
     display: flex;
     justify-content: space-between;
+    color: ${theme.white};
+    margin-bottom: 20px;
 `;
 
 export const Button = styled.button`
@@ -12,7 +15,7 @@ export const Button = styled.button`
   margin: 0 1rem;
   background: transparent;
   color: red;
-  border: 2px solid red;
+  border: 2px solid ${theme.primary};
   cursor: pointer;
   &:hover {
     transform: translateY(1px);
@@ -20,8 +23,8 @@ export const Button = styled.button`
   };
   &:disabled {
     transform: none;
-    color: gray;
-    border: 2px solid gray;
+    color: ${theme.gray};
+    border: 2px solid ${theme.gray};
     box-shadow: none;
     cursor: default;
   }
@@ -32,7 +35,7 @@ export const CardContent = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
   }
   li {
     list-style-type: none;
