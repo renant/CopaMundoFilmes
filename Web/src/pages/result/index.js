@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 
-import { MainHeader } from '../../styles/style'
+import MovieCardResult from '../../components/MovieCardResult';
+import { MainHeader, Loading, Button } from '../../styles/style'
+import { ResultContent } from './style';
 
 import { connect } from "react-redux";
 
@@ -13,6 +15,10 @@ class Result extends Component {
     }
   }
 
+  goToMain = () => {
+    this.props.history.push('/')
+  }
+
   render() {
     const { result, loading } = this.props;
     return (
@@ -23,17 +29,18 @@ class Result extends Component {
           <p>Veja o resultado final do Campeonato de filmes de forma simples e rápida</p>
         </MainHeader>
         {loading &&
-          <h2 style={{ color: 'white' }}>
-            Loading...
-          </h2>
+          <Loading>
+            <i style={{ color: 'white' }} className="fa fa-spinner fa-pulse fa-3x fa-fw" />
+          </Loading>
         }
-        {!loading &&
-          <div>
+        {!loading && result &&
+          <ResultContent>
+            <MovieCardResult result={result.firstPlace} placeNumber="1º"></MovieCardResult>
+            <MovieCardResult result={result.secondPlace} placeNumber="2º"></MovieCardResult>
             <div>
-              <img alt={result.firstPlace.titulo} src={'./images/' + result.firstPlace.id + ".jpg"} />
-              <h2>{result.firstPlace.titulo}</h2>
+              <Button onClick={this.goToMain}>TENTAR NOVAMENTE</Button>
             </div>
-          </div>
+          </ResultContent>
         }
 
       </Fragment>);

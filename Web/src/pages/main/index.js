@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 
 import apiMovies from "../../services/api-movies";
 import MovieCard from '../../components/MovieCard'
-import { MainHeader } from '../../styles/style'
-import { MenuSelectedMovies, Button, CardContent } from './style'
+import { MainHeader, Button } from '../../styles/style'
+import { MenuSelectedMovies, CardContent } from './style'
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
