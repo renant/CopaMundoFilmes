@@ -9,8 +9,13 @@ import { connect } from "react-redux";
 class Result extends Component {
 
   componentWillMount() {
-    console.log(this.props)
     if (!this.props.result && this.props.loading === false) {
+      this.props.history.push('/')
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.result && nextProps.loading === false) {
       this.props.history.push('/')
     }
   }
