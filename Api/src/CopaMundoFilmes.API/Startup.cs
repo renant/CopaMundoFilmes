@@ -62,6 +62,13 @@ namespace CopaMundoFilmes.API
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(c =>
+            {
+                c.AllowAnyHeader();
+                c.AllowAnyMethod();
+                c.AllowAnyOrigin();
+            });
+
             app.UseResponseCompression();
             app.UseSwagger()
              .UseSwaggerUI(c =>
