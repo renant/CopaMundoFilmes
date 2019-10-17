@@ -1,6 +1,6 @@
 # Copa do Mundo de Filmes
 
-A Copa do mundo de filmes é uma aplicação
+A Copa do mundo de filmes é uma aplicação que simula um campeonato entre filmes baseado na sua pontuação entre 8 filmes selecionados, resultando em um vencedor e um segundo colocado
 
 ### Pré-requisito
 
