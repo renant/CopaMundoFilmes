@@ -5,13 +5,13 @@ A Copa do mundo de filmes é uma aplicação que simula um campeonato entre film
 ### Pré-requisito
 
 ```
-Node, .Net Core, Visual Studio 2019/2017
+Npm ou Yarn, .Net Core, Visual Studio 2019/2017
 ```
 
 ### Executando a aplicação Web
 
-- Na pasta 'Web' executar o comando **yarn install**
-- Para iniciar a aplicação usar o comando **yarn start**
+- Na pasta 'Web' executar o comando **yarn install** ou **npm install**
+- Para iniciar a aplicação usar o comando **yarn start** ou **npm start**
 - Para acessar a aplicação: http://localhost:3000/
 
 ### Executando Api
