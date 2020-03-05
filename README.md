@@ -17,4 +17,4 @@ Npm ou Yarn, .Net Core, Visual Studio 2019/2017
 ### Executando Api
 
 - Na pasta 'Api' abrir a solution 'CopaMundoFilmes.sln' utilizando Visual Studio 2019 ou 2017
-- Execultar Utilizando o F5
+- Executar Utilizando o F5
